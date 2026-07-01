@@ -21,8 +21,8 @@ export default function Services() {
   return (
     <div>
       {/* Page header */}
-      <section className="bg-navy text-white py-24">
-        <div className="max-w-container mx-auto px-6 text-center">
+      <section className="bg-navy text-white py-16 sm:py-24">
+        <div className="max-w-container mx-auto px-4 sm:px-6 text-center">
           <Reveal variant="fadeDown">
             <p className="text-accent font-semibold uppercase text-sm tracking-widest mb-4 inline-flex items-center gap-2">
               <span className="w-8 h-px bg-accent inline-block" />
@@ -31,10 +31,10 @@ export default function Services() {
             </p>
           </Reveal>
           <Reveal variant="blurIn" delay={0.15}>
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-5">Our Services</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-5">Our Services</h1>
           </Reveal>
           <Reveal variant="fadeUp" delay={0.25}>
-            <p className="text-white/65 max-w-2xl mx-auto text-lg">
+            <p className="text-white/65 max-w-2xl mx-auto text-base sm:text-lg">
               Nine integrated service lines spanning building automation, fire safety, security,
               and energy management — engineered for enterprise, healthcare, pharma, and data center facilities.
             </p>
@@ -49,9 +49,9 @@ export default function Services() {
           <section
             key={service.slug}
             id={service.slug}
-            className={`scroll-mt-24 py-24 ${isEven ? 'bg-white' : 'bg-bg'}`}
+            className={`scroll-mt-24 py-16 sm:py-24 ${isEven ? 'bg-white' : 'bg-bg'}`}
           >
-            <div className="max-w-container mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+            <div className="max-w-container mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-8 sm:gap-14 items-center">
               <Reveal
                 variant={isEven ? 'slideLeft' : 'slideRight'}
                 className={isEven ? 'md:order-1' : 'md:order-2'}
@@ -64,7 +64,7 @@ export default function Services() {
                     onError={(e) => { e.currentTarget.style.display = 'none' }}
                     className="rounded-2xl shadow-xl w-full object-cover aspect-[4/3] relative z-10"
                   />
-                  <div className={`absolute -bottom-3 ${isEven ? '-right-3' : '-left-3'} w-full h-full rounded-2xl bg-accent/10 border border-accent/15 z-0`} />
+                  <div className={`absolute -bottom-3 ${isEven ? '-right-3' : '-left-3'} w-full h-full rounded-2xl bg-accent/10 border border-accent/15 z-0 hidden sm:block`} />
                 </div>
               </Reveal>
               <Reveal
@@ -72,8 +72,8 @@ export default function Services() {
                 delay={0.12}
                 className={isEven ? 'md:order-2' : 'md:order-1'}
               >
-                <h2 className="text-2xl md:text-3xl font-bold text-navy mb-5">{service.name}</h2>
-                <p className="text-ink/65 leading-relaxed mb-6 text-lg">{service.description}</p>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-navy mb-4 sm:mb-5">{service.name}</h2>
+                <p className="text-ink/65 leading-relaxed mb-5 sm:mb-6 text-base sm:text-lg">{service.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {service.tags.map((tag) => (
                     <span

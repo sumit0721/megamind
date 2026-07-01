@@ -121,3 +121,35 @@ body {
   border-radius: 2px;
   background: linear-gradient(90deg, #2563EB, #60a5fa);
 }
+
+/* ─── Mobile-specific overrides ─── */
+@media (max-width: 639px) {
+  .hero-glow {
+    width: 250px;
+    height: 250px;
+    filter: blur(40px);
+  }
+
+  .stat-accent::after {
+    width: 28px;
+    height: 2px;
+    bottom: -4px;
+  }
+
+  /* Reduce animation intensity on mobile for performance */
+  .animate-slow-pan {
+    animation-duration: 35s;
+  }
+}
+
+/* Remove tap highlight on iOS */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Safe area padding for notch phones */
+@supports (padding: env(safe-area-inset-bottom)) {
+  footer {
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+  }
+}

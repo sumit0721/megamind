@@ -28,10 +28,10 @@ export default function Header() {
           : 'bg-navy/95 backdrop-blur supports-[backdrop-filter]:bg-navy/90'
       }`}
     >
-      <div className="max-w-container mx-auto px-6 h-20 flex items-center justify-between">
-        <Link to="/" className="text-white font-extrabold text-xl tracking-tight group">
+      <div className="max-w-container mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+        <Link to="/" className="text-white font-extrabold text-lg sm:text-xl tracking-tight group">
           <span className="group-hover:text-accent transition-colors duration-300">MEGAMIND</span>
-          <span className="block text-xs font-medium text-muted tracking-wide">ELECTRICAL & AUTOMATION</span>
+          <span className="block text-[10px] sm:text-xs font-medium text-muted tracking-wide">ELECTRICAL & AUTOMATION</span>
         </Link>
 
         {/* Desktop nav */}
@@ -112,7 +112,7 @@ export default function Header() {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="md:hidden overflow-hidden bg-navy border-t border-white/10"
           >
-            <div className="px-6 py-5 flex flex-col gap-4">
+            <div className="px-4 sm:px-6 py-4 sm:py-5 flex flex-col gap-3 sm:gap-4">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.to}

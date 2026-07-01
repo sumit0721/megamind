@@ -13,8 +13,8 @@ export default function Projects() {
 
   return (
     <div>
-      <section className="bg-navy text-white py-24">
-        <div className="max-w-container mx-auto px-6 text-center">
+      <section className="bg-navy text-white py-16 sm:py-24">
+        <div className="max-w-container mx-auto px-4 sm:px-6 text-center">
           <Reveal variant="fadeDown">
             <p className="text-accent font-semibold uppercase text-sm tracking-widest mb-4 inline-flex items-center gap-2">
               <span className="w-8 h-px bg-accent inline-block" />
@@ -23,10 +23,10 @@ export default function Projects() {
             </p>
           </Reveal>
           <Reveal variant="blurIn" delay={0.15}>
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-5">Project Experience</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-5">Project Experience</h1>
           </Reveal>
           <Reveal variant="fadeUp" delay={0.25}>
-            <p className="text-white/65 max-w-2xl mx-auto text-lg">
+            <p className="text-white/65 max-w-2xl mx-auto text-base sm:text-lg">
               19+ projects delivered across data centers, healthcare, pharmaceutical, and
               commercial enterprises in India, the UAE, and Africa.
             </p>
@@ -34,16 +34,16 @@ export default function Projects() {
         </div>
       </section>
 
-      <section className="bg-bg py-20">
-        <div className="max-w-container mx-auto px-6">
+      <section className="bg-bg py-12 sm:py-20">
+        <div className="max-w-container mx-auto px-4 sm:px-6">
           {/* Filter pills */}
           <Reveal>
-            <div className="flex flex-wrap gap-3 justify-center mb-14">
+            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-10 sm:mb-14">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActive(cat)}
-                  className={`relative px-6 py-2.5 rounded-full text-sm font-semibold border transition-all duration-300 ${
+                  className={`relative px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold border transition-all duration-300 ${
                     active === cat
                       ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20'
                       : 'bg-white text-ink/70 border-line hover:border-accent/50 hover:text-accent'
@@ -70,7 +70,7 @@ export default function Projects() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.35, delay: (i % 6) * 0.04, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <div className="card-hover-glow bg-white border border-line rounded-2xl p-7 h-full flex flex-col transition-all duration-300 hover:-translate-y-1">
+                  <div className="card-hover-glow bg-white border border-line rounded-2xl p-5 sm:p-7 h-full flex flex-col transition-all duration-300 hover:-translate-y-1">
                     <span className="text-xs font-semibold text-accent uppercase tracking-wider mb-2">
                       {p.category}
                     </span>

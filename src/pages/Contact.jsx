@@ -28,9 +28,9 @@ export default function Contact() {
   return (
     <div>
       {/* Page header */}
-      <section className="relative bg-navy text-white py-24 overflow-hidden">
+      <section className="relative bg-navy text-white py-16 sm:py-24 overflow-hidden">
         <FloatingParticles count={12} />
-        <div className="relative z-10 max-w-container mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 text-center">
           <Reveal variant="fadeDown">
             <p className="text-accent font-semibold uppercase text-sm tracking-widest mb-4 inline-flex items-center gap-2">
               <span className="w-8 h-px bg-accent inline-block" />
@@ -39,21 +39,21 @@ export default function Contact() {
             </p>
           </Reveal>
           <Reveal variant="blurIn" delay={0.15}>
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-5">Contact Us</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-5">Contact Us</h1>
           </Reveal>
           <Reveal variant="fadeUp" delay={0.25}>
-            <p className="text-white/65 max-w-2xl mx-auto text-lg">
+            <p className="text-white/65 max-w-2xl mx-auto text-base sm:text-lg">
               Tell us about your project — our team will get back to you with the right solution.
             </p>
           </Reveal>
         </div>
       </section>
 
-      <section className="bg-bg py-24">
-        <div className="max-w-container mx-auto px-6 grid lg:grid-cols-5 gap-12">
+      <section className="bg-bg py-12 sm:py-20 md:py-24">
+        <div className="max-w-container mx-auto px-4 sm:px-6 grid lg:grid-cols-5 gap-8 sm:gap-12">
           {/* Form */}
           <Reveal variant="slideLeft" className="lg:col-span-3">
-            <form onSubmit={handleSubmit} className="bg-white border border-line rounded-2xl p-8 md:p-10 space-y-6 shadow-sm">
+            <form onSubmit={handleSubmit} className="bg-white border border-line rounded-2xl p-5 sm:p-8 md:p-10 space-y-5 sm:space-y-6 shadow-sm">
               <h2 className="text-xl font-bold text-navy mb-2">Send an Enquiry</h2>
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
@@ -167,9 +167,9 @@ export default function Contact() {
               <h3 className="font-bold text-navy mb-5 text-sm uppercase tracking-wider">Who To Contact</h3>
               <ul className="space-y-3">
                 {team.map((member) => (
-                  <li key={member.email} className="text-sm flex justify-between border-b border-line last:border-0 pb-3 last:pb-0 items-center">
+                  <li key={member.email} className="text-sm flex flex-col sm:flex-row sm:justify-between border-b border-line last:border-0 pb-3 last:pb-0 gap-0.5 sm:gap-2 sm:items-center">
                     <span className="text-ink/65">{member.role}</span>
-                    <a href={`mailto:${member.email}`} className="text-accent font-medium hover:underline text-xs">{member.email}</a>
+                    <a href={`mailto:${member.email}`} className="text-accent font-medium hover:underline text-xs break-all">{member.email}</a>
                   </li>
                 ))}
               </ul>
