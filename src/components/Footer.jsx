@@ -1,14 +1,18 @@
 import { Link } from 'react-router-dom'
 import { Phone, Mail, Globe, MapPin, ArrowUpRight } from 'lucide-react'
+import FloatingParticles from '../components/FloatingParticles'
 import { services, companyInfo } from '../data/content'
 
 export default function Footer() {
   return (
     <footer className="bg-navy text-white/80 pt-14 sm:pt-20 pb-8 relative overflow-hidden">
-      {/* Subtle top gradient line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+      {/* Floating particles background */}
+      <FloatingParticles count={typeof window !== 'undefined' && window.innerWidth < 640 ? 10 : 20} />
 
-      <div className="max-w-container mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
+      {/* Subtle top gradient line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent z-10" />
+
+      <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
         <div className="col-span-2 md:col-span-1">
           <h3 className="text-white font-extrabold text-xl mb-4">
             MEGAMIND
@@ -69,7 +73,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-container mx-auto px-4 sm:px-6 mt-10 sm:mt-14 pt-5 sm:pt-6 border-t border-white/8 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 mt-10 sm:mt-14 pt-5 sm:pt-6 border-t border-white/8 flex flex-col sm:flex-row justify-between items-center gap-3">
         <p className="text-xs text-white/40">
           © {new Date().getFullYear()} {companyInfo.name}. All rights reserved.
         </p>

@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Reveal from '../components/Reveal'
+import FloatingParticles from '../components/FloatingParticles'
+import { motion } from 'framer-motion'
 import { services } from '../data/content'
 
 export default function Services() {
@@ -20,9 +22,24 @@ export default function Services() {
 
   return (
     <div>
-      {/* Page header */}
-      <section className="bg-navy text-white py-16 sm:py-24">
-        <div className="max-w-container mx-auto px-4 sm:px-6 text-center">
+      <section className="relative bg-navy text-white py-24 sm:py-32 overflow-hidden">
+        {/* Animated background image */}
+        <motion.div
+          className="absolute inset-[-20%] sm:inset-0 animate-slow-pan"
+          style={{
+            backgroundImage: 'url(/images/hero/hero-bg.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
+          }}
+        />
+        {/* Dark overlay with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/85 to-navy/95" />
+        {/* Floating particles */}
+        <FloatingParticles count={typeof window !== 'undefined' && window.innerWidth < 640 ? 12 : 25} />
+        {/* Glow effect */}
+        <div className="hero-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 !w-[250px] !h-[250px] sm:!w-[400px] sm:!h-[400px]" />
+
+        <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 text-center">
           <Reveal variant="fadeDown">
             <p className="text-accent font-semibold uppercase text-sm tracking-widest mb-4 inline-flex items-center gap-2">
               <span className="w-8 h-px bg-accent inline-block" />

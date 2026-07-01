@@ -28,8 +28,22 @@ export default function Contact() {
   return (
     <div>
       {/* Page header */}
-      <section className="relative bg-navy text-white py-16 sm:py-24 overflow-hidden">
-        <FloatingParticles count={12} />
+      <section className="relative bg-navy text-white py-24 sm:py-32 overflow-hidden">
+        {/* Animated background image */}
+        <motion.div
+          className="absolute inset-[-20%] sm:inset-0 animate-slow-pan"
+          style={{
+            backgroundImage: 'url(/images/hero/hero-bg.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
+          }}
+        />
+        {/* Dark overlay with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/85 to-navy/95" />
+        {/* Floating particles */}
+        <FloatingParticles count={typeof window !== 'undefined' && window.innerWidth < 640 ? 12 : 25} />
+        {/* Glow effect */}
+        <div className="hero-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 !w-[250px] !h-[250px] sm:!w-[400px] sm:!h-[400px]" />
         <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 text-center">
           <Reveal variant="fadeDown">
             <p className="text-accent font-semibold uppercase text-sm tracking-widest mb-4 inline-flex items-center gap-2">
