@@ -1,50 +1,84 @@
 import { Link } from 'react-router-dom'
-import { Phone, Mail, Globe, MapPin } from 'lucide-react'
+import { Phone, Mail, Globe, MapPin, ArrowUpRight } from 'lucide-react'
 import { services, companyInfo } from '../data/content'
 
 export default function Footer() {
   return (
-    <footer className="bg-navy text-white/80 pt-16 pb-8">
-      <div className="max-w-container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+    <footer className="bg-navy text-white/80 pt-20 pb-8 relative overflow-hidden">
+      {/* Subtle top gradient line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+
+      <div className="max-w-container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div>
-          <h3 className="text-white font-extrabold text-lg mb-3">MEGAMIND</h3>
-          <p className="text-sm leading-relaxed">{companyInfo.address}</p>
+          <h3 className="text-white font-extrabold text-xl mb-4">
+            MEGAMIND
+            <span className="block text-xs font-medium text-muted tracking-wider mt-0.5">ELECTRICAL & AUTOMATION</span>
+          </h3>
+          <p className="text-sm leading-relaxed text-white/55">{companyInfo.address}</p>
+          <div className="mt-5 flex gap-3">
+            <a href={`tel:${companyInfo.phone}`} className="w-9 h-9 rounded-lg bg-white/8 hover:bg-accent/20 flex items-center justify-center transition-colors">
+              <Phone size={14} className="text-white/70" />
+            </a>
+            <a href={`mailto:${companyInfo.email}`} className="w-9 h-9 rounded-lg bg-white/8 hover:bg-accent/20 flex items-center justify-center transition-colors">
+              <Mail size={14} className="text-white/70" />
+            </a>
+          </div>
         </div>
 
         <div>
-          <h4 className="text-white font-semibold mb-3">Navigate</h4>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/" className="hover:text-white">Home</Link></li>
-            <li><Link to="/services" className="hover:text-white">Services</Link></li>
-            <li><Link to="/projects" className="hover:text-white">Projects</Link></li>
-            <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
+          <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Navigate</h4>
+          <ul className="space-y-2.5 text-sm">
+            <li><Link to="/" className="hover:text-white hover:translate-x-1 inline-flex items-center gap-1 transition-all">Home</Link></li>
+            <li><Link to="/services" className="hover:text-white hover:translate-x-1 inline-flex items-center gap-1 transition-all">Services</Link></li>
+            <li><Link to="/projects" className="hover:text-white hover:translate-x-1 inline-flex items-center gap-1 transition-all">Projects</Link></li>
+            <li><Link to="/contact" className="hover:text-white hover:translate-x-1 inline-flex items-center gap-1 transition-all">Contact</Link></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-white font-semibold mb-3">Services</h4>
-          <ul className="space-y-2 text-sm">
+          <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Services</h4>
+          <ul className="space-y-2.5 text-sm">
             {services.slice(0, 5).map((s) => (
               <li key={s.slug}>
-                <Link to={`/services#${s.slug}`} className="hover:text-white">{s.name}</Link>
+                <Link to={`/services#${s.slug}`} className="hover:text-white transition-colors line-clamp-1">{s.name}</Link>
               </li>
             ))}
           </ul>
         </div>
 
         <div>
-          <h4 className="text-white font-semibold mb-3">Contact</h4>
-          <ul className="space-y-3 text-sm">
-            <li className="flex items-start gap-2"><MapPin size={16} className="mt-0.5 shrink-0" /> {companyInfo.address}</li>
-            <li className="flex items-center gap-2"><Phone size={16} /> {companyInfo.phone}</li>
-            <li className="flex items-center gap-2"><Mail size={16} /> {companyInfo.email}</li>
-            <li className="flex items-center gap-2"><Globe size={16} /> {companyInfo.website}</li>
+          <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Contact</h4>
+          <ul className="space-y-3.5 text-sm">
+            <li className="flex items-start gap-2.5">
+              <MapPin size={15} className="mt-0.5 shrink-0 text-accent/70" /> 
+              <span className="text-white/55">{companyInfo.address}</span>
+            </li>
+            <li className="flex items-center gap-2.5">
+              <Phone size={15} className="text-accent/70" /> 
+              <a href={`tel:${companyInfo.phone}`} className="hover:text-white transition-colors">{companyInfo.phone}</a>
+            </li>
+            <li className="flex items-center gap-2.5">
+              <Mail size={15} className="text-accent/70" /> 
+              <a href={`mailto:${companyInfo.email}`} className="hover:text-white transition-colors">{companyInfo.email}</a>
+            </li>
+            <li className="flex items-center gap-2.5">
+              <Globe size={15} className="text-accent/70" /> 
+              <span className="text-white/55">{companyInfo.website}</span>
+            </li>
           </ul>
         </div>
       </div>
 
-      <div className="max-w-container mx-auto px-6 mt-12 pt-6 border-t border-white/10 text-xs text-white/50">
-        © {new Date().getFullYear()} {companyInfo.name}. All rights reserved.
+      <div className="max-w-container mx-auto px-6 mt-14 pt-6 border-t border-white/8 flex flex-col sm:flex-row justify-between items-center gap-3">
+        <p className="text-xs text-white/40">
+          © {new Date().getFullYear()} {companyInfo.name}. All rights reserved.
+        </p>
+        <Link 
+          to="/contact" 
+          className="text-xs text-accent/70 hover:text-accent inline-flex items-center gap-1 transition-colors"
+        >
+          Get a Quote <ArrowUpRight size={12} />
+        </Link>
       </div>
     </footer>
   )

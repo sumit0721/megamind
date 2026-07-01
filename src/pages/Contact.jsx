@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { Phone, Mail, MapPin } from 'lucide-react'
+import { Phone, Mail, MapPin, Send } from 'lucide-react'
+import { motion } from 'framer-motion'
 import Reveal from '../components/Reveal'
+import FloatingParticles from '../components/FloatingParticles'
 import { services, companyInfo, team } from '../data/content'
 
 export default function Contact() {
@@ -25,49 +27,65 @@ export default function Contact() {
 
   return (
     <div>
-      <section className="bg-navy text-white py-20">
-        <div className="max-w-container mx-auto px-6 text-center">
-          <Reveal>
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Contact Us</h1>
-            <p className="text-white/70 max-w-2xl mx-auto">
+      {/* Page header */}
+      <section className="relative bg-navy text-white py-24 overflow-hidden">
+        <FloatingParticles count={12} />
+        <div className="relative z-10 max-w-container mx-auto px-6 text-center">
+          <Reveal variant="fadeDown">
+            <p className="text-accent font-semibold uppercase text-sm tracking-widest mb-4 inline-flex items-center gap-2">
+              <span className="w-8 h-px bg-accent inline-block" />
+              Get In Touch
+              <span className="w-8 h-px bg-accent inline-block" />
+            </p>
+          </Reveal>
+          <Reveal variant="blurIn" delay={0.15}>
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-5">Contact Us</h1>
+          </Reveal>
+          <Reveal variant="fadeUp" delay={0.25}>
+            <p className="text-white/65 max-w-2xl mx-auto text-lg">
               Tell us about your project — our team will get back to you with the right solution.
             </p>
           </Reveal>
         </div>
       </section>
 
-      <section className="bg-bg py-20">
+      <section className="bg-bg py-24">
         <div className="max-w-container mx-auto px-6 grid lg:grid-cols-5 gap-12">
           {/* Form */}
-          <Reveal className="lg:col-span-3">
-            <form onSubmit={handleSubmit} className="bg-white border border-line rounded-2xl p-8 space-y-5">
+          <Reveal variant="slideLeft" className="lg:col-span-3">
+            <form onSubmit={handleSubmit} className="bg-white border border-line rounded-2xl p-8 md:p-10 space-y-6 shadow-sm">
+              <h2 className="text-xl font-bold text-navy mb-2">Send an Enquiry</h2>
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="text-sm font-semibold text-navy block mb-1.5">Name</label>
                   <input
                     name="name" required value={form.name} onChange={handleChange}
-                    className="w-full border border-line rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+                    placeholder="Your full name"
                   />
                 </div>
                 <div>
                   <label className="text-sm font-semibold text-navy block mb-1.5">Company</label>
                   <input
                     name="company" value={form.company} onChange={handleChange}
-                    className="w-full border border-line rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+                    placeholder="Company name"
                   />
                 </div>
                 <div>
                   <label className="text-sm font-semibold text-navy block mb-1.5">Email</label>
                   <input
                     type="email" name="email" required value={form.email} onChange={handleChange}
-                    className="w-full border border-line rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+                    placeholder="you@company.com"
                   />
                 </div>
                 <div>
                   <label className="text-sm font-semibold text-navy block mb-1.5">Phone</label>
                   <input
                     name="phone" value={form.phone} onChange={handleChange}
-                    className="w-full border border-line rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+                    placeholder="+91 98207 95338"
                   />
                 </div>
               </div>
@@ -76,7 +94,7 @@ export default function Contact() {
                 <label className="text-sm font-semibold text-navy block mb-1.5">Service Interested In</label>
                 <select
                   name="service" value={form.service} onChange={handleChange}
-                  className="w-full border border-line rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent bg-white"
+                  className="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent bg-white transition-all"
                 >
                   <option value="">Select a service</option>
                   {services.map((s) => (
@@ -89,16 +107,19 @@ export default function Contact() {
                 <label className="text-sm font-semibold text-navy block mb-1.5">Message</label>
                 <textarea
                   name="message" rows={5} value={form.message} onChange={handleChange}
-                  className="w-full border border-line rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all resize-none"
+                  placeholder="Tell us about your project requirements..."
                 />
               </div>
 
-              <button
+              <motion.button
                 type="submit"
-                className="bg-accent text-white font-semibold px-7 py-3 rounded-lg hover:bg-blue-600 transition-colors w-full sm:w-auto"
+                className="btn-shimmer bg-accent text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-blue-600 transition-all duration-300 hover:shadow-lg hover:shadow-accent/25 w-full sm:w-auto inline-flex items-center justify-center gap-2"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Send Enquiry
-              </button>
+                <Send size={16} /> Send Enquiry
+              </motion.button>
               <p className="text-xs text-ink/40">
                 This opens your email client with the message pre-filled. A live form handler will replace this before launch.
               </p>
@@ -106,17 +127,32 @@ export default function Contact() {
           </Reveal>
 
           {/* Company details */}
-          <Reveal delay={0.1} className="lg:col-span-2 space-y-6">
-            <div className="bg-navy text-white rounded-2xl p-8">
-              <h3 className="font-bold text-lg mb-5">Company Details</h3>
-              <ul className="space-y-4 text-sm text-white/80">
-                <li className="flex items-start gap-3"><MapPin size={18} className="mt-0.5 shrink-0 text-accent" /> {companyInfo.address}</li>
-                <li className="flex items-center gap-3"><Phone size={18} className="text-accent" /> {companyInfo.phone}</li>
-                <li className="flex items-center gap-3"><Mail size={18} className="text-accent" /> {companyInfo.email}</li>
+          <Reveal variant="slideRight" delay={0.1} className="lg:col-span-2 space-y-6">
+            <div className="bg-navy text-white rounded-2xl p-8 shadow-lg">
+              <h3 className="font-bold text-lg mb-6">Company Details</h3>
+              <ul className="space-y-5 text-sm text-white/80">
+                <li className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+                    <MapPin size={16} className="text-accent" />
+                  </div>
+                  <span>{companyInfo.address}</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-accent/15 flex items-center justify-center shrink-0">
+                    <Phone size={16} className="text-accent" />
+                  </div>
+                  <span>{companyInfo.phone}</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-accent/15 flex items-center justify-center shrink-0">
+                    <Mail size={16} className="text-accent" />
+                  </div>
+                  <span>{companyInfo.email}</span>
+                </li>
               </ul>
             </div>
 
-            <div className="rounded-2xl overflow-hidden border border-line h-64">
+            <div className="rounded-2xl overflow-hidden border border-line h-64 shadow-sm">
               <iframe
                 title="Megamind location"
                 width="100%"
@@ -127,13 +163,13 @@ export default function Contact() {
               />
             </div>
 
-            <div className="bg-white border border-line rounded-2xl p-6">
-              <h3 className="font-bold text-navy mb-4 text-sm">Who To Contact</h3>
+            <div className="bg-white border border-line rounded-2xl p-7 shadow-sm">
+              <h3 className="font-bold text-navy mb-5 text-sm uppercase tracking-wider">Who To Contact</h3>
               <ul className="space-y-3">
                 {team.map((member) => (
-                  <li key={member.email} className="text-sm flex justify-between border-b border-line last:border-0 pb-2 last:pb-0">
-                    <span className="text-ink/70">{member.role}</span>
-                    <a href={`mailto:${member.email}`} className="text-accent font-medium">{member.email}</a>
+                  <li key={member.email} className="text-sm flex justify-between border-b border-line last:border-0 pb-3 last:pb-0 items-center">
+                    <span className="text-ink/65">{member.role}</span>
+                    <a href={`mailto:${member.email}`} className="text-accent font-medium hover:underline text-xs">{member.email}</a>
                   </li>
                 ))}
               </ul>
